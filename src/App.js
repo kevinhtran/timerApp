@@ -1,16 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const App = () => {
 
   const calculateTimeLeft = () => {
-    let year = new Date.getFullYear();
+    let year = new Date().getFullYear();
     let difference = +new Date(`01/01/${year}`) - +new Date();
-
-    // create an empty object called timeLeft which will then be filled in with days, hours, minutes, and seconds in the if statement.
     let timeLeft = {};
 
-    // you round the numbers from the day, hours, minutes, and seconds down and drop the remainder to get a whole number value.
-    // you can then compare the differnce to see if it is greater than 0.
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -19,10 +15,13 @@ const App = () => {
         seconds: Math.floor((difference / 1000) % 60)
       };
     }
-    // You return timeLeft variable so that you can use the value elsewhere in the component.
+
     return timeLeft;
 
   };
+
+  // to make the coutdown timer work, you will need to wire up the calculateTimeLeft method we previously coded to update the state
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   return (
     <div>
