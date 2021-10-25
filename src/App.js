@@ -1,13 +1,27 @@
 import React from 'react'
 
 const App = () => {
-  // This function will calculate the time remaining between the current date and the first date of New Years.
+
   const calculateTimeLeft = () => {
-    // This is a Date object to find the current year but can also use it to work with dates and times.
-    // You can use this variable to calculate the difference between the current date and the first day of New Years.
     let year = new Date.getFullYear();
-    // When you use the year variable in place of a hard-coded year, you will always have the current year.
     let difference = +new Date(`01/01/${year}`) - +new Date();
+
+    // create an empty object called timeLeft which will then be filled in with days, hours, minutes, and seconds in the if statement.
+    let timeLeft = {};
+
+    // you round the numbers from the day, hours, minutes, and seconds down and drop the remainder to get a whole number value.
+    // you can then compare the differnce to see if it is greater than 0.
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      };
+    }
+    // You return timeLeft variable so that you can use the value elsewhere in the component.
+    return timeLeft;
+
   };
 
   return (
