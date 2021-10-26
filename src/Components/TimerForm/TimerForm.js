@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import Countdown from '../CountdownTimer/Countdown';
+import CountDown from '../CountdownTimer/CountDown.js'
 
 const TimerForm = () => {
 
@@ -8,15 +8,8 @@ const TimerForm = () => {
   let handleSubmit = ((event) => {
     event.preventDefault();
 
-    // Can i destructure this to use as props?
-    // const {name: "", hours: "", minutes: "", seconds: ""} = props;
-
-    const formData = {
-      name: "",
-      hours: "",
-      minutes: "",
-      seconds: ""
-    };
+    // Can I destructure this to use as props?
+    const formData = { name: "", hours: "", minutes: "", seconds: "" };
 
     formData.name = event.target.name.value;
     formData.hours = event.target.hours.value;
@@ -37,7 +30,7 @@ const TimerForm = () => {
           <h1>{data.hours}</h1>
           <h1>{data.minutes}</h1>
           <h1>{data.seconds}</h1>
-          {/* <Countdown hours={ } minutes={ } seconds={ } /> */}
+          <CountDown />
         </>
       )
     })
@@ -59,6 +52,3 @@ const TimerForm = () => {
 }
 
 export default TimerForm;
-
-
-// automatically reset form after hitting submit button

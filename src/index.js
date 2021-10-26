@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TimerForm from './Components/TimerForm/TimerForm';
-import Countdown from './Components/CountdownTimer/Countdown';
 
 ReactDOM.render(
   <React.StrictMode>
