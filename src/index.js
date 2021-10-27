@@ -45,3 +45,5 @@ ReactDOM.render(
 // do they just appear side to side? stack on each other?
 // if side-to-side, should it be in a grid container where 3 timers take up one roll (12 cols on the row)
 
+// use milliseconds for everything
+// have a helper function that helps you break diown the milliseconds to seconds, minutes, hours
