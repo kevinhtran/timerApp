@@ -4,27 +4,24 @@ import './Clock.css';
 const Clock = ({ timerHours, timerMinutes, timerSeconds }) => {
   return (
     <>
-      <div className="">
-        <section className="timer-container">
-          <section className="timer">
-            <div className="clock">
-              <section>
-                <p>{timerHours}</p>
-                <small>Hours</small>
-              </section>{" "}
-              <span>:</span>
-              <section>
-                <p>{timerMinutes}</p>
-                <small>Minutes</small>
-              </section>{" "}
-              <span>:</span>
-              <section>
-                <p>{timerSeconds}</p>
-                <small>Seconds</small>
-              </section>
-            </div>
-          </section>
-        </section>
+      <h1>Countdown Clock</h1>
+      <div id="clockdiv">
+        <div>
+          <span class="days"></span>
+          <div class="smalltext">Days</div>
+        </div>
+        <div>
+          <span class="hours"></span>
+          <div class="smalltext">Hours</div>
+        </div>
+        <div>
+          <span class="minutes"></span>
+          <div class="smalltext">Minutes</div>
+        </div>
+        <div>
+          <span class="seconds"></span>
+          <div class="smalltext">Seconds</div>
+        </div>
       </div>
     </>
   );

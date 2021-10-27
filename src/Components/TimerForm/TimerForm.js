@@ -30,7 +30,6 @@ const TimerForm = () => {
 
     let newContainerForTimers = _.cloneDeep(containerForTimers);
 
-    // debugger
 
     let getTimerObject = newContainerForTimers.filter((timerData) => {
       if (timerData.name === props.timerData.name) { return timerData }

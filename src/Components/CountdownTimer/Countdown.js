@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import Clock from './Clock';
 import './Clock.css';
 
 const CountDown = (props) => {
@@ -19,38 +18,37 @@ const CountDown = (props) => {
       let totalDistanceSeconds = hours + minutes + seconds
 
       let decrementedTimetotalDistanceSeconds = totalDistanceSeconds
+
       if (decrementedTimetotalDistanceSeconds <= 0) {
         // Stop Timer
         clearInterval(interval);
       } else {
         // Update Timer
-
         decrementedTimetotalDistanceSeconds -= 1000;
 
         const newHours = Math.floor((decrementedTimetotalDistanceSeconds % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60));
         const newMinutes = Math.floor((decrementedTimetotalDistanceSeconds % (60 * 60 * 1000)) / (1000 * 60));
         const newSeconds = Math.floor((decrementedTimetotalDistanceSeconds % (60 * 1000)) / 1000);
-        console.log(decrementedTimetotalDistanceSeconds)
         props.handleUpdate(timerData, newHours, newMinutes, newSeconds);
 
       }
     }, 1000);
   };
 
-  useEffect(() => {
-    startTimer();
-    console.log("start timer should only run once, we should only see this message once")
-  })
+  // useEffect(() => {
+  //   startTimer();
+  //   console.log("start timer should only run once, we should only see this message once")
+  // })
 
 
-  useEffect(() => {
-    setTimerData(props)
-    console.log(`what is seconds ${props.timerData.seconds} in use effect here`)
+  // useEffect(() => {
+  //   setTimerData(props)
+  //   console.log(`what is seconds ${props.timerData.seconds} in use effect here`);
 
-    console.log(`what is timerData seconds ${timerData.timerData.seconds} in use effect here`)
+  //   console.log(`what is timerData seconds ${timerData.timerData.seconds} in use effect here`);
 
-    console.log("use effect should run every re render")
-  }, [props]);
+  //   console.log("use effect should run every re render");
+  // }, [props]);
 
   return (
     <div className="App">
