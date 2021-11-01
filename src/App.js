@@ -1,11 +1,17 @@
-import React from 'react';
-import './App.css';
-import Form from './Components/TimerForm/Form';
+import TimerForm from "./Components/TimerForm/TimerForm";
+import CountDown from "./Components/Countdown";
 
-const App = () => {
+function App() {
   return (
-    <Form />
+    <>
+      <div className="App">
+        <TimerForm />
+      </div>
+    </>
   );
-}
+};
 
 export default App;
+
+
+

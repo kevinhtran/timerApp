@@ -1,78 +1,106 @@
 import React, { useState } from 'react';
-import CountDown from '../CountdownTimer/CountDown.js'
-import _ from 'lodash';
+import CountDown from '../Countdown';
+import './TimerForm.css';
 
 const TimerForm = () => {
+  const [formItem, setFormItem] = useState("");
+  const [formMinutes, setFormMinutes] = useState();
+  const [formSeconds, setFormSeconds] = useState();
+  const [timerStart, setTimerStart] = useState(false);
   const [containerForTimers, setContainerForTimers] = useState([]);
 
-  let handleSubmit = ((event) => {
-    event.preventDefault();
+  const run2Functions = () => {
+    createTimer();
+  }
 
-    const formData = { name: "", hours: "", minutes: "", seconds: "" };
+  const createTimer = () => {
+    let newItem = formItem
+    let newMinutes = formMinutes
+    let newSeconds = formSeconds
 
-    formData.name = event.target.name.value;
-    formData.hours = event.target.hours.value;
-    formData.minutes = event.target.minutes.value;
-    formData.seconds = event.target.seconds.value;
+    let newContainerForTimers = containerForTimers.slice();
+    newContainerForTimers.push(
+      <CountDown
+        formItem={formItem}
+        formMinutes={formMinutes}
+        formSeconds={formSeconds}
+        timerStart={true}
+      />
+    );
+    setContainerForTimers(newContainerForTimers);
 
-    let newContainer = containerForTimers.slice();
-    newContainer.push(formData);
-    containerForTimers.push(formData);
-    setContainerForTimers(newContainer);
-  });
+    setFormItem("");
+    setFormMinutes(0);
+    setFormSeconds(0);
+  }
 
-  const updateState = ((props, hours, minutes, seconds) => {
-    // [
-    //   { name: "Steak", hours: "1", minutes: "2", seconds: "3" },
-    //   { name: "Rice", hours: "4", minutes: "2", seconds: "7" },
-    //   { name: "Lobster", hours: "1", minutes: "2", seconds: "3" }
-    // ]
+  const renderCountDowns = () => {
+    console.log(containerForTimers)
+    return containerForTimers.map((component, index) => {
+      return <div key={index}>{component}</div>
+    });
+  };
 
-    let newContainerForTimers = _.cloneDeep(containerForTimers);
-
-
-    let getTimerObject = newContainerForTimers.filter((timerData) => {
-      if (timerData.name === props.timerData.name) { return timerData }
-    })[0]
-
-
-
-    getTimerObject.hours = hours;
-    getTimerObject.minutes = minutes;
-    getTimerObject.seconds = seconds;
-
-    setContainerForTimers(newContainerForTimers)
-  })
-
-
-  let displayTimerData = (() => {
-    return containerForTimers.map((data) => {
-      return (
-        <>
-          <CountDown
-            handleUpdate={updateState}
-            timerData={data}
-          />
-        </>
-      )
-    })
-  })
-
-  // make a function to change the data
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>Item name:<input type="text" name="name" placeholder="item name"></input></div>
-        <div>Hours:<input type="text" name="hours" placeholder="00"></input></div>
-        <div>Minutes:<input type="text" name="minutes" placeholder="00"></input></div>
-        <div>Seconds:<input type="text" name="seconds" placeholder="00"></input></div>
-        <button type="reset">Reset</button>
-        <button type="submit">Submit</button>
-      </form>
-      {displayTimerData()}
-    </div>
-  )
-}
+    <>
+      <div className='form-container'>
+        <form onSubmit={handleSubmit} className='form' noValidate>
+          <h1>Create your Cooking Timer!</h1>
+          <div className='form-inputs'>
+            <label htmlFor='item' className='form-label'>Item:</label>
+            <input
+              className='form-input'
+              type='text'
+              name='item'
+              placeholder='Enter item name'
+              defaultValue={formItem}
+              onChange={(e) => setFormItem(e.target.value)}
+            />
+          </div>
+          <div className='form-inputs'>
+            <label htmlFor='minutes' className='form-label'>Minutes:</label>
+            <input
+              className='form-input'
+              type='number'
+              name='minutes'
+              placeholder='Enter minute(s)'
+              defaultValue={formMinutes}
+              onChange={(e) => setFormMinutes(e.target.value)}
+            />
+          </div>
+          <div className='form-inputs'>
+            <label htmlFor='seconds' className='form-label'>Seconds:</label>
+            <input
+              className='form-input'
+              type='number'
+              name='seconds'
+              placeholder='Enter second(s)'
+              defaultValue={formSeconds}
+              onChange={(e) => setFormSeconds(e.target.value)}
+            />
+          </div>
+          <button
+            onClick={() => { run2Functions() }}
+            type='submit'
+            className='form-input-btn'
+          >
+            Start Timer
+          </button>
+          <button
+            type='reset'
+            className='form-input-btn'
+          >
+            Reset Timer
+          </button>
+        </form>
+      </div>
+      {renderCountDowns()}
+    </>
+  );
+};
 
 export default TimerForm;
