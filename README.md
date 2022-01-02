@@ -1,12 +1,37 @@
-Tools:
-1. React.js - Create-React-App(CRA)
+Timers - Introduction
+https://makeschool.org/mediabook/oa/tutorials/react-redux-passwords-app-tutorial-oh4/react-redux-timers-introduction/
 
-Description:
-This is a very straight forward Countdown Timer application where you as the chef can create as many timers necessary to assist with keeping track of your ingredients/items while they are in the process of cooking. A form is present for you to fill out the item name, minutes, and seconds. Timers will run simultaneously with each other for better tracking and once the countdown has decremented entirely, the timer will disappear. 
+The goal of the project is to create a web app that stores a list of timers. Timers will keep track of elapsed time. It could be used to track time for billing clients, scientific processes, or other uses. Through building this app, you will learn how to use React to manage views, and Redux to manage application state.
 
-Testing the Timer App:
-- There are 3 input fields: Item Name, Minutes, and Seconds. Please fill them all out accurately.
-- Once you are done filling out the fields, hit the "Start Timer" button to initiate your timer.
-- The Timer will disappear once the countdown has finished.
-- Once a countdown timer has finished, you will notice that the name is still present. This indicates that this previous timer has finished and you no longer have to time it again. :)
-- To add an additional timer, simply hit the "Reset Timer" button as it will clear the input fields for you to fill out again with your new inputs. Hit "Start Timer" again and see your new timer in action working simultaneously with the others.
+While not a complete product, this app has many features that allow you to learn more about JavaScript, React and Redux. It also provides an opportunity to learn more about vanilla JavaScript and takes a close look at the Date Object.
+
+The app created in this tutorial could be the basis of a real world product like Toggl.com!
+
+Why is this important?
+This gives practice in building web apps using React and getting familiar with the JSX syntax. As you go throughout this course, we'll be building more complex apps, so it's good to have the fundamentals down, which you'll learn in this tutorial!
+
+Prerequisites
+To follow this tutorial, you should have...
+
+A basic understanding of JavaScript.
+Familiarity with React and JSX.
+Some understanding of the ES6 version of JavaScript
+
+Learning Outcomes
+By the end of this tutorial, you should be able to...
+
+Build React components using JSX syntax
+Manage application state using the Flux pattern
+Use timing methods and objects in JavaScript to accurately track time
+Use the BEM system to create class names for styling
+Define class objects and utilize the OOP paradigm
+
+Technical Planning
+Build a Timer object
+Define the Actions of a Timer
+Define the Reducers of a Timer
+Allow users to create a Timer
+Allow users to see a list of Timers
+Users should be able to start/stop the clock on their Timers
+Style the app
+Allow Timers to persist
